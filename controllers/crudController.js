@@ -9,7 +9,7 @@ export const create = async (req, res) => {
       });
     }
 
-    existingOne = await Crud.findOne({ email });
+    const existingOne = await Crud.findOne({ email });
     if (existingOne) {
       return res.json("Ticket is already booked");
     }
