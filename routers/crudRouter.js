@@ -5,9 +5,9 @@ import { create, deleteCrud, get, getById, update } from "../controllers/crudCon
 const crudRoute=express.Router()
 crudRoute.post("/create",create)
 crudRoute.get("/get",get)
-crudRoute.get("/getbyid",getById)
-crudRoute.put("/update",update)
-crudRoute.delete("/delete",deleteCrud)
+crudRoute.get("/getbyid/:id",getById)
+crudRoute.put("/update/:id",update)
+crudRoute.delete("/delete/:id",deleteCrud)
 
 
 export default crudRoute
