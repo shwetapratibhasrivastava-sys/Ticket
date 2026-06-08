@@ -48,7 +48,7 @@ export const login = async (req, res) => {
       return res.json({ message: "User doesn't exists" });
     }
 
-    const valid = await bcrypt.compare(password, exisiting.Password);
+    const valid = await bcrypt.compare(password, exisiting.password);
     if (!valid) {
       return res.json({
         message: "Invalid password",
