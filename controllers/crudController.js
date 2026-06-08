@@ -84,7 +84,7 @@ export const deleteCrud=async(req,res)=>{
         const Crudelete=await Crud.findByIdAndDelete(req.params.id)
          return res.json({
       message: "Ticket deleted successfully",
-      data: CrudUpdated,
+      data: Crudelete,
     });
     } catch (error) {
         return res.json({
