@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import cors from "cors"
 import connectDb from "./config/db.js"
 import crudRoute from "./routers/crudRouter.js"
+import authRouter from "./routers/authRouter.js"
 
 
 
@@ -21,6 +22,7 @@ return res.json("Api is running")
 })
 
 app.use("/api/crud",crudRoute)
+app.use("auth/auth",authRouter)
 
 app.listen(PORT,()=>{
     return console.log(`server is running on Port ${PORT}`)
