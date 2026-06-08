@@ -55,7 +55,8 @@ export const login = async (req, res) => {
       });
     }
     return res.json({
-      message: "Login successful"
+      message: "Login successful",
+      data:exisiting
     });
   } catch (error) {
     return res.json({
