@@ -1,5 +1,6 @@
 import Auth from "../models/authModel.js";
 import bcrypt from "bcryptjs"
+import jwt from "jsonwebtoken"
 
 export const register = async (req, res) => {
   try {
@@ -23,8 +24,16 @@ export const register = async (req, res) => {
       email,
       password: hashedPassword,
     });
+    
+    const token = jwt.sign({ id: auth._id, email: auth.email },
+       process.env.JWT_SECRET,
+        {
+      expiresIn: "7d",
+    });
+
     return res.json({
       message: "User created successfully",
+      token,
       data: auth,
     });
   } catch (error) {
@@ -54,9 +63,15 @@ export const login = async (req, res) => {
         message: "Invalid password",
       });
     }
+    
+    const token = jwt.sign({ id: exisiting._id, email: exisiting.email }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
     return res.json({
       message: "Login successful",
-      data:exisiting
+      token,
+      data: exisiting
     });
   } catch (error) {
     return res.json({
@@ -64,3 +79,5 @@ export const login = async (req, res) => {
     })
   }
 };
+
+
