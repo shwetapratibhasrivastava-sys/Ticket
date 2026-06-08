@@ -22,7 +22,7 @@ return res.json("Api is running")
 })
 
 app.use("/api/crud",crudRoute)
-app.use("api/auth",authRouter)
+app.use("/api/auth",authRouter)
 
 app.listen(PORT,()=>{
     return console.log(`server is running on Port ${PORT}`)
